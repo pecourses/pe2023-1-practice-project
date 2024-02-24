@@ -31,40 +31,13 @@ router.post(
 
 router.post('/login', validators.validateLogin, userController.login);
 
-// /contests
-
 router.use('/contests', contestsRouter);
-
-// router.post(
-//   '/pay',
-//   checkToken.checkToken,
-//   basicMiddlewares.onlyForCustomer,
-//   upload.uploadContestFiles,
-//   basicMiddlewares.parseBody,
-//   validators.validateContestCreation,
-//   userController.payment
-// );
 
 router.post(
   '/dataForContest',
   checkToken.checkToken,
   contestController.dataForContest
 );
-
-// /users/1/contests
-// /contests/byCustomer
-// router.post(
-//   '/getCustomersContests',
-//   checkToken.checkToken,
-//   contestController.getCustomersContests
-// );
-
-// router.get(
-//   '/getContestById',
-//   checkToken.checkToken,
-//   basicMiddlewares.canGetContest,
-//   contestController.getContestById
-// );
 
 router.post(
   '/getAllContests',
