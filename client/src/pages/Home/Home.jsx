@@ -8,6 +8,8 @@ import Footer from '../../components/Footer/Footer';
 import styles from './Home.module.sass';
 import carouselConstants from '../../carouselConstants';
 import Spinner from '../../components/Spinner/Spinner';
+import NamingContest from './NamingContest';
+import FirstNamingContestPlaform from './FirstNamingContestPlatform/FirstNamingContestPlaform';
 
 const Home = props => {
   const [index, setIndex] = useState(0);
@@ -34,7 +36,7 @@ const Home = props => {
     <>
       <Header />
       {isFetching ? (
-        <Spinner />
+        <Spinner mtop />
       ) : (
         <>
           <div className={styles.container}>
@@ -54,6 +56,9 @@ const Home = props => {
                   DASHBOARD
                 </Link>
               </div>
+            </div>
+            <div className={styles.namingContestContainer}>
+              <NamingContest />
             </div>
             <div className={styles.greyContainer}>
               <SlideBar
@@ -154,6 +159,9 @@ const Home = props => {
                   <span>Industries</span>
                 </div>
               </div>
+            </div>
+            <div className={styles.firstPlatformContainer}>
+              <FirstNamingContestPlaform />
             </div>
             <h2>How Do Name Contest Work?</h2>
             <div className={styles.whiteContainer}>

@@ -6,17 +6,19 @@ import Spinner from '../Spinner/Spinner';
 
 const PrivateHoc = (Component, props) => {
   class Hoc extends React.Component {
-    componentDidMount() {
+    componentDidMount () {
       if (!this.props.data) {
         this.props.getUser();
       }
     }
 
-    render() {
+    render () {
+      if (this.props.error) return <Redirect to='/' />;
+
       return (
         <>
           {this.props.isFetching ? (
-            <Spinner />
+            <Spinner mtop />
           ) : (
             <Component
               history={this.props.history}
@@ -29,9 +31,9 @@ const PrivateHoc = (Component, props) => {
     }
   }
 
-  const mapStateToProps = (state) => state.userStore;
+  const mapStateToProps = state => state.userStore;
 
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = dispatch => ({
     getUser: () => dispatch(getUser()),
   });
 

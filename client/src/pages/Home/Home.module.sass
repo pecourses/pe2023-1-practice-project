@@ -1,3 +1,9 @@
+%centerSectionContainer 
+  max-width: 1140px
+  min-width: 320px
+  width: 100%
+  padding: 30px
+  
 @mixin stepCard
   display: flex
   flex-direction: column
@@ -285,6 +291,92 @@
   @media screen and (max-width: 414px)
     padding: 0
 
+.namingContestContainer
+  @include innerContainer
+  background-color: #FAFAFA
+
+.namingContestSection
+  @extend %centerSectionContainer 
+  background-color: white
+  box-sizing: border-box
+  display: flex
+  justify-content: space-between
+  align-items: center
+  gap: 20px
+  @media screen and (max-width:700px)
+    flex-direction: column
+
+.namingContestInfo  
+  display: flex
+  align-items: center
+
+.namingContestText 
+  margin-left: 20px
+
+.namingContestHead 
+  text-align: left  
+
+.namingContestP
+    font-family: Raleway, sans-serif
+    font-size: 18px
+    font-weight: 400
+    line-height: 25px
+
+.namingContestLinkContainer  
+  @media screen and (max-width:700px)
+    align-self: start
+    margin: 20px 0 20px 70px
+
+.namingContestLink
+  padding: 15px 20px
+  color: white
+  text-decoration: none
+  white-space: nowrap
+  background: linear-gradient(271.19deg,#4433F1 0%,#628EFF 100%),linear-gradient(271.19deg,#307DF6 0%,#14BBBF 100%), #FFFFFF 
+  border-radius: 10px
+  &:hover
+    background-color: #0e68f5
+
+// World's #1 Naming Contest Platform START 
+.firstPlatformContainer
+  @include innerContainer
+
+.firstPlatformSection 
+  @extend %centerSectionContainer 
+
+.firstPlatformCards
+  display: flex
+  flex-wrap: wrap
+
+.firstPlatformCardContainer
+  padding: 15px
+  box-sizing: border-box
+  width: 25%
+  @media screen and (max-width: 900px)
+    width: 50%
+
+.firstPlatformCard
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 10px
+  height: 100%
+  padding: 10px
+  box-sizing: border-box
+  border-radius: 20px
+  box-shadow: 0 8px 40px rgb(0,0,0,0.06)
+  font-family: Raleway, sans-serif
+  text-align: center
+
+.firstPlatformCardTitle
+  font-size: calc(16px + 0.5vw)
+  font-weight: 500    
+
+.firstPlatformCardBody
+  font-size: 14px
+  font-weight: 400
+  line-height: 20px  
+// World's #1 Naming Contest Platform END 
 
 .greyContainer
   @include innerContainer
@@ -294,7 +386,6 @@
 .whiteContainer
   @include innerContainer
   background-color: white
-
 
 .greenContainer
   @include innerContainer
@@ -409,5 +500,3 @@
   &:hover
     color: white
     background-color: #28D2D1
-
-
