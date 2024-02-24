@@ -31,39 +31,32 @@ router.post(
 
 router.post('/login', validators.validateLogin, userController.login);
 
+router.post('/getUser', checkToken.checkAuth);
+
+// require auth
+
+router.use(checkToken.checkToken);
+
 router.use('/contests', contestsRouter);
 
-router.post(
-  '/dataForContest',
-  checkToken.checkToken,
-  contestController.dataForContest
-);
+router.post('/dataForContest', contestController.dataForContest);
 
 router.post(
   '/getAllContests',
-  checkToken.checkToken,
   basicMiddlewares.onlyForCreative,
   contestController.getContests
 );
 
-router.post('/getUser', checkToken.checkAuth);
-
-router.get(
-  '/downloadFile/:fileName',
-  checkToken.checkToken,
-  contestController.downloadFile
-);
+router.get('/downloadFile/:fileName', contestController.downloadFile);
 
 router.post(
   '/updateContest',
-  checkToken.checkToken,
   upload.updateContestFile,
   contestController.updateContest
 );
 
 router.post(
   '/setNewOffer',
-  checkToken.checkToken,
   upload.uploadLogoFiles,
   basicMiddlewares.canSendOffer,
   contestController.setNewOffer
@@ -71,28 +64,20 @@ router.post(
 
 router.post(
   '/setOfferStatus',
-  checkToken.checkToken,
   basicMiddlewares.onlyForCustomerWhoCreateContest,
   contestController.setOfferStatus
 );
 
 router.post(
   '/changeMark',
-  checkToken.checkToken,
   basicMiddlewares.onlyForCustomer,
   userController.changeMark
 );
 
-router.post(
-  '/updateUser',
-  checkToken.checkToken,
-  upload.uploadAvatar,
-  userController.updateUser
-);
+router.post('/updateUser', upload.uploadAvatar, userController.updateUser);
 
 router.post(
   '/cashout',
-  checkToken.checkToken,
   basicMiddlewares.onlyForCreative,
   userController.cashout
 );
@@ -107,35 +92,15 @@ router.post('/blackList', checkToken.checkToken, chatController.blackList);
 
 router.post('/favorite', checkToken.checkToken, chatController.favoriteChat);
 
-router.post(
-  '/createCatalog',
-  checkToken.checkToken,
-  chatController.createCatalog
-);
+router.post('/createCatalog', chatController.createCatalog);
 
-router.post(
-  '/updateNameCatalog',
-  checkToken.checkToken,
-  chatController.updateNameCatalog
-);
+router.post('/updateNameCatalog', chatController.updateNameCatalog);
 
-router.post(
-  '/addNewChatToCatalog',
-  checkToken.checkToken,
-  chatController.addNewChatToCatalog
-);
+router.post('/addNewChatToCatalog', chatController.addNewChatToCatalog);
 
-router.post(
-  '/removeChatFromCatalog',
-  checkToken.checkToken,
-  chatController.removeChatFromCatalog
-);
+router.post('/removeChatFromCatalog', chatController.removeChatFromCatalog);
 
-router.post(
-  '/deleteCatalog',
-  checkToken.checkToken,
-  chatController.deleteCatalog
-);
+router.post('/deleteCatalog', chatController.deleteCatalog);
 
 router.post('/getCatalogs', checkToken.checkToken, chatController.getCatalogs);
 
