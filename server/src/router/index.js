@@ -51,11 +51,13 @@ router.post(
   contestController.dataForContest
 );
 
-router.post(
-  '/getCustomersContests',
-  checkToken.checkToken,
-  contestController.getCustomersContests
-);
+// /users/1/contests
+// /contests/byCustomer
+// router.post(
+//   '/getCustomersContests',
+//   checkToken.checkToken,
+//   contestController.getCustomersContests
+// );
 
 router.get(
   '/getContestById',
