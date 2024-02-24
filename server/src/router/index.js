@@ -33,6 +33,9 @@ router.post('/login', validators.validateLogin, userController.login);
 
 router.post('/getUser', checkToken.checkAuth);
 
+// GET /offers?limit=10&offset=0
+router.get('/offers', contestController.getAllOffers);
+
 // require auth
 
 router.use(checkToken.checkToken);
