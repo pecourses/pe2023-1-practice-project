@@ -8,6 +8,7 @@ const controller = require('../socketInit');
 const userQueries = require('./queries/userQueries');
 const bankQueries = require('./queries/bankQueries');
 const ratingQueries = require('./queries/ratingQueries');
+const ServerError = require('../errors/ServerError');
 
 module.exports.login = async (req, res, next) => {
   try {
@@ -250,6 +251,26 @@ module.exports.cashout = async (req, res, next) => {
     res.send({ balance: updatedUser.balance });
   } catch (err) {
     transaction.rollback();
+    next(err);
+  }
+};
+
+module.exports.getTransactions = async (req, res, next) => {
+  const {
+    query: { limit = 8, offset = 0 },
+    tokenData: { userId },
+  } = req;
+
+  try {
+    const foundTransactions = await bd.Transactions.findAll({
+      where: { userId },
+      limit,
+      offset,
+      raw: true,
+    });
+
+    res.status(200).send(foundTransactions);
+  } catch (err) {
     next(err);
   }
 };
