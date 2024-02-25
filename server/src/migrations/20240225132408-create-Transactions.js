@@ -10,6 +10,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      // TODO 'INCOME', 'EXPENCE' to constants
       operationType: {
         type: Sequelize.ENUM('INCOME', 'EXPENCE'),
         allowNull: false,
