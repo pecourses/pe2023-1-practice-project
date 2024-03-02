@@ -205,6 +205,7 @@ class CreatorDashboard extends React.Component {
     const badgesParams = [
       { label: 'My Entries', name: 'ownEntries', defaultValue: false },
       { label: 'contest ID', name: 'contestId', defaultValue: '' },
+      { label: 'industry', name: 'industry', defaultValue: '' },
     ];
 
     return (
