@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-// import * as dateFns from 'date-fns';
+import format from 'date-fns/format';
 import Header from '../../components/Header/Header';
 import { getTransactions } from '../../store/slices/transactionsSlice';
 import Spinner from '../../components/Spinner/Spinner';
@@ -13,10 +13,10 @@ function TransactionsPage ({ transactions, isFetching, error, get }) {
 
   const mapTransactions = t => (
     <tr key={t.id}>
-      {/* <td>{dateFns.format(new Date(t.createdAt), 'yyyy-MM-dd')}</td> */}
-      <td>{`${new Date(t.createdAt).getFullYear()}-${new Date(
+      <td>{format(new Date(t.createdAt), 'yyyy-MM-dd')}</td>
+      {/* <td>{`${new Date(t.createdAt).getFullYear()}-${new Date(
         t.createdAt
-      ).getMonth()}-${new Date(t.createdAt).getDate()}`}</td>
+      ).getMonth()}-${new Date(t.createdAt).getDate()}`}</td> */}
       <td>{t.operationType}</td>
       <td>{t.summ}</td>
     </tr>
