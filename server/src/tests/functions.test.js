@@ -31,7 +31,6 @@ describe('Testing utils', () => {
 
     it('should return NaN:number when "NaN":string', () => {
       const result = mapStringToValues('NaN');
-      // const expected = NaN;
       expect(result).to.be.NaN;
     });
 
