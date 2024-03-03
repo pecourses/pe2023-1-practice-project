@@ -49,3 +49,20 @@ const types = [
   'logo,tagline',
   'name,logo',
 ];
+
+module.exports.mapStringToValues = v => {
+  switch (v) {
+    case 'true':
+      return true;
+    case 'false':
+      return false;
+    case 'null':
+      return null;
+    case 'undefined':
+      return undefined;
+    case 'NaN':
+      return NaN;
+    default:
+      return v;
+  }
+};
