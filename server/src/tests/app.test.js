@@ -62,4 +62,50 @@ describe('Testing app', () => {
       });
     });
   });
+
+  describe('Testing private endpoints', () => {
+    let token = '';
+
+    before(done => {
+      request(app)
+        .post('/login')
+        .send(userCredentials)
+        .then(res => {
+          token = res.body.token;
+          done();
+        })
+        .catch(err => done(err));
+    });
+    describe('POST /getUser', () => {
+      it('response should be 200 {user} when token exists+correct', done => {
+        request(app)
+          .post('/getUser')
+          .set('Authorization', token)
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .then(res => {
+            expect(res.body.email).to.equal(userCredentials.email);
+            done();
+          })
+          .catch(err => done(err));
+      });
+
+      it('response should be 408 "need token" when token is missed', done => {
+        request(app)
+          .post('/getUser')
+          .expect(408)
+          .expect('need token')
+          .end(done);
+      });
+
+      it('response should be 408 "token error" when token isn`t correct', done => {
+        request(app)
+          .post('/getUser')
+          .set('Authorization', 'sfdsf')
+          .expect(408)
+          .expect('token error')
+          .end(done);
+      });
+    });
+  });
 });
